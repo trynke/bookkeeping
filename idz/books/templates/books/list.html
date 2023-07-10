@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Book list{% endblock %}
+
+{% block content %}
+    <div align='center'>
+        <h2>Домашняя библиотека</h2>
+        <a href='{% url "book_new" %}' class='title-name'>Добавить новую книгу</a>
+        <br>
+        <form align="center">
+            <br>
+            <input type="search" placeholder="Название" name="title">
+            <input type="search" placeholder="Автор" name="author">
+            <input type="search" placeholder="Жанр" name="genre">
+            <br>
+            <input type="search" placeholder="Год издания" name="year">
+            <input type="search" placeholder="Издательство" name="publisher">
+            <br><br>
+            <button type="submit">Поиск</button>
+        </form>
+        <br>
+    </div>
+    <div class="column">
+        {% for book in books %}
+        <div class="card">
+            <div><h5 align="center">{{ book.title }}</h5></div>
+            <div><h5 align="center">{{ book.author.all|join:", " }}</h5></div>
+            <ul>
+                <li>Издательство: {{ book.publisher.all|join:", " }}</li>
+                <li>Жанр: {{ book.genre.all|join:", " }}</li>
+                <li>Количество cтраниц: {{ book.pages }}</li>
+                <li>Год издания: {{ book.year }}</li>
+                <li>Шифр ISBN: {{ book.isbn }}</li>
+                <li>Тип переплёта: {{ book.binging }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+
+    <style>
+        .card {
+            width: 400px;
+            height: 250px;
+            position: relative;
+            background: rgb(222, 231, 250);
+            padding: 5px 10px;
+            float: left;
+            margin-right: 90px;
+            margin-bottom: 70px;
+        }
+    
+        .column {
+            margin-left: 35px;
+            text-align: justify;
+            position: relative;
+        }    
+    </style>
+{% endblock %}

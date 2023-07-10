@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}New book{% endblock %}
+
+{% block content %}
+    <div>
+        <form method = 'POST' action= '' enctype = "multipart/form-data" novalidate id = "book-form" align='center'>{% csrf_token %}
+            <h3>Добавление новой книги</h3>
+            <div class='column' align='center'>
+                <label for="book-title" class="control-label">Название</label>
+                {{ form.title }}
+                <br><br>
+                <label for="book-author" class="control-label">Автор</label>
+                {{ form.author }}
+                <a href="../author/create" id="add_author" onclick="return showAddPopup(this);">+</a>
+                <br><br>
+                <label for="book-publisher" class="control-label">Издательство</label>
+                {{ form.publisher }}
+                <a href="../publisher/create" id="add_publisher" onclick="return showAddPopup(this);">+</a>
+                <br><br>
+                <label for="year" class="control-label">Год</label>
+                {{ form.year }}
+                <br><br>
+                <label for="genre" class="control-label">Жанр</label>
+                {{ form.genre }}
+                <a href="../genre/create" id="add_genre" onclick="return showAddPopup(this);">+</a>
+                <br><br>
+                <label for="pages" class="control-label">Количество страниц</label>
+                {{ form.pages }}
+                <br><br>
+                <label for="isbn" class="control-label">Шифр ISBN</label>
+                {{ form.isbn }}
+                <br><br>
+                <label for="binging" class="control-label">Тип переплета</label>
+                {{ form.binging }}
+                <br><br>
+            </div>
+            <br><br>
+            <input type="submit" value = "Сохранить"/>
+        </form>
+    </div>
+
+    <style>
+        .column{
+           align-content: center;
+           column-count: 2;
+           text-align: justify;
+           margin-top: 35px;
+           margin-left: 300px;
+        }
+        
+    </style>
+
+{% endblock %}

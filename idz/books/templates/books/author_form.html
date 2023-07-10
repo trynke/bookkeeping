@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class = "container">
+	<h1>Добавление автора</h1>
+	<form method = 'POST' action= '' enctype = "multipart/form-data" novalidate id = "author-form">{% csrf_token %}
+		{{form.as_p}}
+		<input type="submit" value = "Добавить" />
+	</form>
+</div>
+{% endblock %}

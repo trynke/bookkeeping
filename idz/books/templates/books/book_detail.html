@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+    <p id='main_info'>"{{ book.title }}", {{ book.author }}, {{ book.pages }}стр. </p>
+    <p id='genre'>Жанр: {{ book.genre }}</p>
+    <p id='published'>{{ book.publisher }}, {{ book.place_publish }}, {{ book.year }} год</p>
+    <p id='isbn'>Шифр ISBN: {{ book.isbn }}</p>
+    <p id='binging'>Переплёт: {{ book.binging }}</p>
+{% endblock %}
