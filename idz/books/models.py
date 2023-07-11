@@ -15,6 +15,7 @@ class Publisher(models.Model):
     def __str__(self):
         return self.publisher_name
 
+
 class Genre(models.Model):
     genre_title = models.CharField(max_length=200, blank=False)
     
