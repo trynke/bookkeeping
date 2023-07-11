@@ -6,6 +6,7 @@ import json
 from .forms import BookForm, AuthorForm, PublisherForm, GenreForm
 from .models import Book, Author, Publisher, Genre
 
+
 def book_list(request):
     if 'title' in request.GET:
         title = request.GET['title']
