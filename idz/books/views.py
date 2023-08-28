@@ -1,10 +1,8 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-import json
 
 from .forms import BookForm, AuthorForm, PublisherForm, GenreForm
-from .models import Book, Author, Publisher, Genre
+from .models import Book
 
 
 def book_list(request):
@@ -29,7 +27,7 @@ def book_list(request):
             genre__genre_title__icontains=genre,
             year__icontains=year,
             publisher__publisher_name__icontains=publisher
-            )
+            ).distinct()
 
         if books.count() == 0:
             return render(request, 'books/noresults.html')
